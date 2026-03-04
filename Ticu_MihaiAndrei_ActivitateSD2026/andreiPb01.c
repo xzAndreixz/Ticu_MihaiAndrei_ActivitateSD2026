@@ -1,20 +1,19 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 
 int main() {
 
+	int varsta;
+	char nume[50];
+	double avere;
 
-	printf("Salut, Andrei!\n");
+	printf("Nume: "); scanf_s("%s", nume, (unsigned)sizeof(nume)); 
+	printf("Varsta: "); scanf_s("%d", &varsta);
+	printf("Avere: "); scanf_s("%lf", &avere);
 
-	int var = 0;
-	printf("Te rog sa introduci un numar intreg:");
-	scanf_s("%d", &var);
 
-	printf("Ai introdus: %d \n", var);
+	printf("%s are la varsta de %d ani o avere de aproximativ %5.2lf euro", nume, varsta, avere);
 
-	float s;
-	printf("Introdu o variabila reala: ");
-	scanf_s("%f", &s);
-	printf("Ai introdus: %f", s);
 
 	return 0;
 }
