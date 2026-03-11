@@ -38,9 +38,9 @@ float pretTotal(struct Rezervare p) {
 	return total;
 }
 
-void modificaPret(struct Rezervare r, float noulPret) {
+void modificaPret(struct Rezervare* r, float noulPret) {
 	if (noulPret > 0) {
-		r.pretPerNoapte = noulPret;
+		r->pretPerNoapte = noulPret;  //ori dereferentiem cu (*r).pret... sau folosim sageata: r->pret...
 	}
 }
 
@@ -49,8 +49,10 @@ int main() {
 	struct Rezervare r1;
 	r1 = initializare(1, "Andrei", 108, 5, 150);
 	afisare(r1);
-	printf("Total cazare: %.2f lei\n", pretTotal(r1));
+	printf("Total cazare: %.2f lei\n", pretTotal(r1)); //750
 
-	
+	modificaPret(&r1, 250);
+	afisare(r1);
+	printf("Total cazare: %.2f lei\n", pretTotal(r1)); //1250
 	return 0;
 }
