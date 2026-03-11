@@ -30,14 +30,19 @@ void afisare(struct Rezervare afisare) {
 	printf("Nume client: %s\n", afisare.numeClient);
 	printf("Camera: %d\n", afisare.numarCamera);
 	printf("Nopti: %d\n", afisare.nopti);
-	printf("Pret per noapte: %.2f\n", afisare.pretPerNoapte);
+	printf("Pret per noapte: %.2f lei\n", afisare.pretPerNoapte);
+}
+
+float pretTotal(struct Rezervare p) {
+	float total = p.nopti * p.pretPerNoapte;
+	return total;
 }
 
 int main() {
 
 	struct Rezervare r1;
-	r1 = initializare(1, "Andrei", 108, 3, 150);
+	r1 = initializare(1, "Andrei", 108, 5, 150);
 	afisare(r1);
-
+	printf("Total cazare: %.2f lei\n", pretTotal(r1));
 	return 0;
 }
