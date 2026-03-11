@@ -39,12 +39,24 @@ void dezalocare(struct Film* d) {
 	}
 }
 
+void afisareFilme(const struct Film* a, int n) {
+	for (int i = 0; i < n; i++) {
+		afisare(a[i]);  //aici se face automat dereferentierea!  a[i] este echivalent cu *(a+i)
+	}
+}
+
 int main() {
 
-	struct Film filmul1 = initializare(1, "Avengers", 9.9, 2012);
-	afisare(filmul1);
-	dezalocare(&filmul1);
-	afisare(filmul1);
+	struct Film* filme;
+	filme = (Film*)malloc(sizeof(Film) * 3);
+	filme[0] = initializare(1, "Avengers", 9.9, 2012);
+	filme[1] = initializare(2, "Spider Man", 8.5, 2002);
+	filme[2] = initializare(3, "Iron Man", 10, 2008);
+
+	afisareFilme(filme, 3);
+
+	printf("%d", (*filme).id);
+	
 
 	return 0;
 }
