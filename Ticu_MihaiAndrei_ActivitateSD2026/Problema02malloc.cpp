@@ -49,5 +49,7 @@ int main() {
 	filme[1] = initializare(2, "Spider Man", 8.5, 2002);
 	filme[2] = initializare(3, "Iron Man", 10, 2008);
 
+
+
 	return 0;
 }
