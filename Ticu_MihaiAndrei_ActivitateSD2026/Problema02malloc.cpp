@@ -29,7 +29,8 @@ void afisare(struct Film a) {
 
 int main() {
 
-	
+	struct Film filmul1 = initializare(1, "Avengers", 9.9, 2012);
+	afisare(filmul1);
 
 	return 0;
 }
