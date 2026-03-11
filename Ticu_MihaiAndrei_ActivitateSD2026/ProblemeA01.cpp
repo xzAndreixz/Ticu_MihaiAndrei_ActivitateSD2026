@@ -1,6 +1,6 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
-#include<string>
+#include<string.h>
 struct Rezervare {
 
 	int id;
@@ -13,10 +13,11 @@ struct Rezervare {
 struct Rezervare initializare(int id, const char numeClient[50], int numarCamera, int nopti, float pretPerNoapte) {
 	struct Rezervare i1;
 	i1.id = id;
-	if (strlen(numeClient) < 50)
+	if (strlen(numeClient) < 50 && strlen(numeClient) > 0)
 		strcpy(i1.numeClient, numeClient);
 	else {
-		printf("Ai depasit numarul de caractere!");
+		printf("Ai depasit numarul de caractere!\n");
+		strcpy(i1.numeClient, "Necunoscut");
 	}
 	i1.numarCamera = numarCamera;
 	i1.nopti = nopti;
@@ -43,7 +44,7 @@ void modificaPret(struct Rezervare* r, float noulPret) {
 		r->pretPerNoapte = noulPret;  //ori dereferentiem cu (*r).pret... sau folosim sageata: r->pret...
 	}
 	else {
-		printf("Nu ati introdus un pret valid!");
+		printf("Nu ati introdus un pret valid!\n");
 	}
 }
 
@@ -69,7 +70,7 @@ void modificaNumarNopti(struct Rezervare* r, int nopti) {
 int main() {
 
 	struct Rezervare r1;
-	r1 = initializare(1, "Andrei", 108, 5, 150);
+	r1 = initializare(1, "", 108, 5, 150);
 	afisare(r1);
 	printf("Total cazare: %.2f lei\n", pretTotal(r1)); //750
 
