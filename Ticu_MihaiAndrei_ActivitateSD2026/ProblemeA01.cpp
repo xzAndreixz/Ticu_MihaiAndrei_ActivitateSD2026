@@ -42,11 +42,18 @@ void modificaPret(struct Rezervare* r, float noulPret) {
 	if (noulPret > 0) {
 		r->pretPerNoapte = noulPret;  //ori dereferentiem cu (*r).pret... sau folosim sageata: r->pret...
 	}
+	else {
+		printf("Nu ati introdus un pret valid!");
+	}
 }
 
 void modificaNumeClient(struct Rezervare* r, const char numeClient[50]) {
 	if (strlen(numeClient) > 0 && strlen(numeClient) < 50) {
 		strcpy((*r).numeClient, numeClient);
+	}
+	else {
+		if (strlen(numeClient) == 0) printf("Nu ati introdus un nume!\n");
+		if (strlen(numeClient) >= 50) printf("Ati depasit numerul de caractere(49) disponibile\n");
 	}
 }
 
@@ -66,7 +73,7 @@ int main() {
 	afisare(r1);
 	printf("Total cazare: %.2f lei\n", pretTotal(r1)); //750
 
-	modificaPret(&r1, 250);
+	modificaPret(&r1, -250);
 	afisare(r1);
 	printf("Total cazare: %.2f lei\n", pretTotal(r1)); //1250
 
