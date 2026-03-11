@@ -40,6 +40,12 @@ void dezalocare(struct Film* d) {
 }
 
 
+void afiseazaColectieFilme(const struct Film* filme, int n) {  //am pus const pentru a fi sigur ca in interiorul functiei nu modific filmele
+	for (int i = 0; i < n; i++) {
+		afisare(filme[i]);  //aici se face dereferentiera implicit. Poti scrie si *(filme+i)
+	}
+}
+
 
 int main() {
 
@@ -49,6 +55,7 @@ int main() {
 	filme[1] = initializare(2, "Spider Man", 8.5, 2002);
 	filme[2] = initializare(3, "Iron Man", 10, 2008);
 
+	afiseazaColectieFilme(filme, 3);
 
 
 	return 0;
