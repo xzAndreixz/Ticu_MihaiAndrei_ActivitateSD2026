@@ -45,7 +45,9 @@ int main() {
 
 	struct Film* filme;
 	filme = (Film*)malloc(sizeof(Film) * 3);
-	
+	filme[0] = initializare(1, "Avengers", 9.9, 2012);
+	filme[1] = initializare(2, "Spider Man", 8.5, 2002);
+	filme[2] = initializare(3, "Iron Man", 10, 2008);
 
 	return 0;
 }
