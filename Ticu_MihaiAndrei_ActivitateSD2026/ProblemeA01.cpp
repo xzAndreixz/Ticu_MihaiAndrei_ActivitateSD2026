@@ -44,6 +44,12 @@ void modificaPret(struct Rezervare* r, float noulPret) {
 	}
 }
 
+void modificaNumeClient(struct Rezervare* r, const char numeClient[50]) {
+	if (strlen(numeClient) > 0 && strlen(numeClient) < 50) {
+		strcpy((*r).numeClient, numeClient);
+	}
+}
+
 int main() {
 
 	struct Rezervare r1;
@@ -54,5 +60,10 @@ int main() {
 	modificaPret(&r1, 250);
 	afisare(r1);
 	printf("Total cazare: %.2f lei\n", pretTotal(r1)); //1250
+
+	printf("\n\n");
+	modificaNumeClient(&r1, "Mihai");
+
+	afisare(r1);
 	return 0;
 }
