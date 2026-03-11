@@ -46,6 +46,29 @@ void afiseazaColectieFilme(const struct Film* filme, int n) {  //am pus const pe
 	}
 }
 
+struct Film* copiazaPrimeleNElemente(const struct Film* t, int nrElemente, int nrElementeDorite) {
+	struct Film* filmeNou;
+	filmeNou = (struct Film*)malloc(sizeof(struct Film) * nrElementeDorite);
+
+	for (int i = 0; i < nrElementeDorite; i++) {
+		filmeNou[i] = t[i];  //doar asta inseamna shallow copy
+		filmeNou[i].titlu = (char*)malloc(sizeof(char) * strlen(t[i].titlu) + 1);
+		strcpy_s(filmeNou[i].titlu, strlen(t[i].titlu) + 1, t[i].titlu);  //cu aceste doua randuri am facut deep copy :)
+	}
+	
+	return filmeNou;
+	
+}
+
+void dezalocareV(struct Film** vector, int* nrElemente) {
+	for (int i = 0; i < (*nrElemente); i++) {
+		free((*vector)[i].titlu);
+	}
+
+	free(*vector);
+	*vector = NULL;
+	*nrElemente = 0;
+}
 
 int main() {
 
@@ -57,6 +80,14 @@ int main() {
 
 	afiseazaColectieFilme(filme, 3);
 
+	struct Film* colectCopiata = NULL;
+	int nrDimFilmeNou = 2;
 
+	colectCopiata = copiazaPrimeleNElemente(filme, 3, nrDimFilmeNou);
+
+	afiseazaColectieFilme(colectCopiata, nrDimFilmeNou);
+
+	dezalocareV(&colectCopiata, &nrDimFilmeNou);
+	afiseazaColectieFilme(colectCopiata, nrDimFilmeNou);
 	return 0;
 }
