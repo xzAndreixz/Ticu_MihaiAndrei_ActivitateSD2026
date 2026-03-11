@@ -29,7 +29,8 @@ struct Rezervare initializare(int id, const char numeClient[50], int numarCamera
 
 int main() {
 
-	
+	struct Rezervare r1;
+	r1 = initializare(1, "Andrei", 108, 3, 150);
 
 
 	return 0;
