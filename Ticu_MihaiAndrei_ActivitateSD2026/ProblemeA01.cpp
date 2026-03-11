@@ -50,6 +50,15 @@ void modificaNumeClient(struct Rezervare* r, const char numeClient[50]) {
 	}
 }
 
+void modificaNumarNopti(struct Rezervare* r, int nopti) {
+	if (nopti > 0) {
+		r->nopti = nopti;
+	}
+	else {
+		printf("Nu a putut fi facuta modificarea, intrucat nu ai dat un numar valid!\n");
+	}
+}
+
 int main() {
 
 	struct Rezervare r1;
@@ -64,6 +73,10 @@ int main() {
 	printf("\n\n");
 	modificaNumeClient(&r1, "Mihai");
 
+	afisare(r1);
+
+	printf("\n\n");
+	modificaNumarNopti(&r1, -2);
 	afisare(r1);
 	return 0;
 }
