@@ -20,6 +20,13 @@ struct Film initializare(int id, const char* titlu, float rating, int anAparitie
 	return f;
 }
 
+void afisare(struct Film a) {
+	printf("Id film: %d\n", a.id);
+	printf("Titlu film: %s\n", a.titlu);
+	printf("Rating: %.1f\n", a.rating);
+	printf("An aparitie: %d\n", a.anAparitie);
+}
+
 int main() {
 
 	
