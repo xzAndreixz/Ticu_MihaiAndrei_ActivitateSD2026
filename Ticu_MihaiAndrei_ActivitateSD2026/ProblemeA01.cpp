@@ -38,11 +38,19 @@ float pretTotal(struct Rezervare p) {
 	return total;
 }
 
+void modificaPret(struct Rezervare r, float noulPret) {
+	if (noulPret > 0) {
+		r.pretPerNoapte = noulPret;
+	}
+}
+
 int main() {
 
 	struct Rezervare r1;
 	r1 = initializare(1, "Andrei", 108, 5, 150);
 	afisare(r1);
 	printf("Total cazare: %.2f lei\n", pretTotal(r1));
+
+	
 	return 0;
 }
