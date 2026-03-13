@@ -41,13 +41,15 @@ struct Caiet* copaizaPrimeleNElemente(struct Caiet* c, int dim, int dimCopiaza) 
 }
 
 void dezalocare(struct Caiet** v, int* nrElemente) {
-	for (int i = 0; i < (*nrElemente); i++) {
-		if ((*v)[i].tip != NULL)
-			free((*v)[i].tip);
+	if (*v != NULL) {
+		for (int i = 0; i < (*nrElemente); i++) {
+			if ((*v)[i].tip != NULL)
+				free((*v)[i].tip);
+		}
+		free((*v));
+		(*v) = NULL;
+		(*nrElemente) = 0;
 	}
-	free((*v));
-	(*v) = NULL;
-	(*nrElemente) = 0; 
 }
 
 struct Caiet* copaizaCaiete(struct Caiet* c, int dim, int nrPg,int* dimVcopiat){ // caietele care au mai mult de 80 de pagini
@@ -72,13 +74,16 @@ struct Caiet* copaizaCaiete(struct Caiet* c, int dim, int nrPg,int* dimVcopiat){
 }
 
 void copaizaCaieteV2(struct Caiet* original, int dim, const char* tip, struct Caiet** copie, int* dimReturnata) {
-	int mem = 0;
+	if ((*copie) != NULL)
+		dezalocare(copie, dimReturnata);
+	*dimReturnata = 0;
 	for (int i = 0; i < dim; i++) {
-		if (strcmp(original[i].tip, tip) == 0) mem++;
+		if (strcmp(original[i].tip, tip) == 0) (*dimReturnata)++;
 	}
 	
+	
 		int j = 0;
-		(*copie) = (struct Caiet*)malloc(sizeof(struct Caiet) * mem);
+		(*copie) = (struct Caiet*)malloc(sizeof(struct Caiet) * (*dimReturnata));
 		for (int i = 0; i < dim; i++) {
 			if (strcmp(original[i].tip, tip) == 0) {
 				(*copie)[j] = original[i];
@@ -88,7 +93,7 @@ void copaizaCaieteV2(struct Caiet* original, int dim, const char* tip, struct Ca
 			}
 		}
 	
-	*dimReturnata = mem;
+
 	return (*copie);
 
 
@@ -112,10 +117,10 @@ int main() {
 	afisareVector(caietePeste80File, nrCaietePeste80DeFile);
 	
 	int dimCaieteDeMate = 0;
-	struct Caiet* caieteDeMate;
-	copaizaCaieteV2(caieteDiv, nrCaiete, "Mate", &caieteDeMate, &dimCaieteDeMate);
+	struct Caiet* caieteDeMate = NULL;
+	copaizaCaieteV2(caieteDiv, nrCaiete, "Mate", &caietePeste80File, &dimCaieteDeMate);
 	printf("\nAfisam doar caietele de mate: \n");
-	afisareVector(caieteDeMate, dimCaieteDeMate);
+	afisareVector(caietePeste80File, dimCaieteDeMate);
 	
 	return 0;
 }
