@@ -32,7 +32,6 @@ void afisare(struct Caiet c) {
 }
 
 void afisareVector(struct Caiet* a, int dim) {
-	
 	for (int i = 0; i < dim; i++) {
 		afisare(a[i]);
 	}
@@ -69,9 +68,6 @@ int main() {
 	vectorDeCaiete[1] = initializare("Romana", 150);
 	vectorDeCaiete[2] = initializare();
 
-	dezalocare(&vectorDeCaiete, &nrCaiete);
-
-	afisareVector(vectorDeCaiete, nrCaiete);
-	printf("\n");
+	
 	return 0;
 }
