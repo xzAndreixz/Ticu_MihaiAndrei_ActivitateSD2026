@@ -117,10 +117,11 @@ int main() {
 	copaizaCaieteV2(caieteDiv, nrCaiete, "Mate", &caieteDeMate, &dimCaieteDeMate);
 	printf("\nAfisam doar caietele de mate: \n");
 	afisareVector(caieteDeMate, dimCaieteDeMate);
-	
+	printf("Dimensiunea vectorului cu caietele de matematica: %d\n", dimCaieteDeMate);
+
 	copaizaCaieteV2(caieteDiv, nrCaiete, "Rom", &caieteDeMate, &dimCaieteDeMate);
 	printf("\nAfisam doar caietele de romana: \n");
 	afisareVector(caieteDeMate, dimCaieteDeMate);
-	
+	printf("Dimensiunea vectorului cu caietele de romana: %d\n", dimCaieteDeMate);
 	return 0;
 }
