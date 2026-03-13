@@ -118,9 +118,9 @@ int main() {
 	
 	int dimCaieteDeMate = 0;
 	struct Caiet* caieteDeMate = NULL;
-	copaizaCaieteV2(caieteDiv, nrCaiete, "Mate", &caietePeste80File, &dimCaieteDeMate);
+	copaizaCaieteV2(caieteDiv, nrCaiete, "Mate", &caieteDeMate, &dimCaieteDeMate);
 	printf("\nAfisam doar caietele de mate: \n");
-	afisareVector(caietePeste80File, dimCaieteDeMate);
+	afisareVector(caieteDeMate, dimCaieteDeMate);
 	
 	return 0;
 }
