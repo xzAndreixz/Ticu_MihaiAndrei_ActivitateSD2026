@@ -75,7 +75,7 @@ struct Caiet* copaizaCaiete(struct Caiet* c, int dim, int nrPg,int* dimVcopiat){
 
 void copaizaCaieteV2(struct Caiet* original, int dim, const char* tip, struct Caiet** copie, int* dimReturnata) {  //dereferentierea se mai faci si prin indexare!
 	if ((*copie) != NULL)
-		dezalocare(copie, dimReturnata);
+		dezalocare(copie, dimReturnata);  // grija mare la cum dai parametri...verifica antetul functiei folosite pentru a intelege! Aici de exemplu primesc adresa si functia cere adresa de aceea nu am dereferentiat.
 	*dimReturnata = 0;
 	for (int i = 0; i < dim; i++) {
 		if (strcmp(original[i].tip, tip) == 0) (*dimReturnata)++;
@@ -118,7 +118,9 @@ int main() {
 	printf("\nAfisam doar caietele de mate: \n");
 	afisareVector(caieteDeMate, dimCaieteDeMate);
 	
-	
+	copaizaCaieteV2(caieteDiv, nrCaiete, "Rom", &caieteDeMate, &dimCaieteDeMate);
+	printf("\nAfisam doar caietele de romana: \n");
+	afisareVector(caieteDeMate, dimCaieteDeMate);
 	
 	return 0;
 }
