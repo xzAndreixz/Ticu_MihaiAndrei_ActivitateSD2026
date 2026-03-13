@@ -32,9 +32,13 @@ void afisare(struct Caiet c) {
 }
 
 
+
 int main() {
 
-	
+	int nrCaiete = 3;
+	struct Caiet* vectorDeCaiete;
+	vectorDeCaiete = (struct Caiet*)malloc(sizeof(struct Caiet) * nrCaiete);
+
 
 	return 0;
 }
