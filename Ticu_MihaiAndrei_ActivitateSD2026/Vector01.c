@@ -7,14 +7,6 @@ struct Caiet {
 	int nrPg;
 };
 
-struct Caiet initializare() {
-	struct Caiet c;
-	c.nrPg = 60;
-	c.tip = (char*)malloc(sizeof(char) * strlen("Matematica") + 1);
-	strcpy_s(c.tip, strlen("Matematica") + 1, "Matematica");
-
-	return c;
-}
 
 
 struct Caiet initializare(const char* tip, int nrPg) {
@@ -84,13 +76,14 @@ int main() {
 
 	caieteDiv[0] = initializare("Mate", 150);
 	caieteDiv[1] = initializare("Rom", 100);
-	caieteDiv[2] = initializare();
+	caieteDiv[2] = initializare("Mate", 60);
 
 
-	int dimNrCaiete;
+	int nrCaietePeste80DeFile;
 	struct Caiet* caietePeste80File;
-	caietePeste80File = copaizaCaiete(caieteDiv, nrCaiete, 80, &dimNrCaiete);
-
+	caietePeste80File = copaizaCaiete(caieteDiv, nrCaiete, 80, &nrCaietePeste80DeFile);
+	printf("Toate aceste caiete au peste 80 de file: \n");
+	afisareVector(caietePeste80File, nrCaietePeste80DeFile);
 	
 
 
