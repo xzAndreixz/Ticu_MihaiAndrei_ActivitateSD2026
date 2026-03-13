@@ -48,7 +48,15 @@ struct Caiet* copaizaPrimeleNElemente(struct Caiet* c, int dim, int dimCopiaza) 
 	return v;
 }
 
-
+void dezalocare(struct Caiet** v, int* nrElemente) {
+	for (int i = 0; i < (*nrElemente); i++) {
+		if ((*v)[i].tip != NULL)
+			free((*v)[i].tip);
+	}
+	free((*v));
+	(*v) = NULL;
+	(*nrElemente) = 0; 
+}
 
 int main() {
 
@@ -59,5 +67,7 @@ int main() {
 	vectorDeCaiete[0] = initializare("Matematica", 150);
 	vectorDeCaiete[1] = initializare("Romana", 150);
 	vectorDeCaiete[2] = initializare();
+
+	
 	return 0;
 }
