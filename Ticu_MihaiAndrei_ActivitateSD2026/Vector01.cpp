@@ -31,6 +31,11 @@ void afisare(struct Caiet c) {
 	printf("Nr. pagini: %d\n\n", c.nrPg);
 }
 
+void afisareVector(struct Caiet* a, int dim) {
+	for (int i = 0; i < dim; i++) {
+		afisare(a[i]);
+	}
+}
 
 
 int main() {
@@ -38,7 +43,9 @@ int main() {
 	int nrCaiete = 3;
 	struct Caiet* vectorDeCaiete;
 	vectorDeCaiete = (struct Caiet*)malloc(sizeof(struct Caiet) * nrCaiete);
-
-
+	
+	vectorDeCaiete[0] = initializare("Matematica", 150);
+	vectorDeCaiete[1] = initializare("Romana", 150);
+	vectorDeCaiete[2] = initializare();
 	return 0;
 }
