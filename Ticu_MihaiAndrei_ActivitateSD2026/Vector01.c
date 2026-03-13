@@ -95,6 +95,23 @@ void copaizaCaieteV2(struct Caiet* original, int dim, const char* tip, struct Ca
 
 }
 
+struct Caiet getPrimulCaietDupaTip(struct Caiet* a, int dim, const char* tip) {
+	
+	struct Caiet c;
+
+	for (int i = 0; i < dim; i++) {
+		if (strcmp(a[i].tip, tip) == 0) {
+			c = a[i];
+			c.tip = (char*)malloc(sizeof(char) * (strlen(tip) + 1));
+			strcpy_s(c.tip, strlen(tip) + 1, tip);
+			i = dim + 1;
+		}
+	}
+
+	return c;
+
+}
+
 
 int main() {
 	int nrCaiete = 3;
@@ -123,5 +140,12 @@ int main() {
 	printf("\nAfisam doar caietele de romana: \n");
 	afisareVector(caieteDeMate, dimCaieteDeMate);
 	printf("Dimensiunea vectorului cu caietele de romana: %d\n", dimCaieteDeMate);
+
+	
+	printf("\nPrimul caiet de mate: \n");
+	struct Caiet primul = getPrimulCaietDupaTip(caieteDiv, nrCaiete, "Mate");
+	afisare(primul);
+
+
 	return 0;
 }
