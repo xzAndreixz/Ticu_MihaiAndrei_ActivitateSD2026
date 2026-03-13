@@ -73,7 +73,7 @@ struct Caiet* copaizaCaiete(struct Caiet* c, int dim, int nrPg,int* dimVcopiat){
 	return vector;
 }
 
-void copaizaCaieteV2(struct Caiet* original, int dim, const char* tip, struct Caiet** copie, int* dimReturnata) {
+void copaizaCaieteV2(struct Caiet* original, int dim, const char* tip, struct Caiet** copie, int* dimReturnata) {  //dereferentierea se mai faci si prin indexare!
 	if ((*copie) != NULL)
 		dezalocare(copie, dimReturnata);
 	*dimReturnata = 0;
@@ -86,17 +86,12 @@ void copaizaCaieteV2(struct Caiet* original, int dim, const char* tip, struct Ca
 		(*copie) = (struct Caiet*)malloc(sizeof(struct Caiet) * (*dimReturnata));
 		for (int i = 0; i < dim; i++) {
 			if (strcmp(original[i].tip, tip) == 0) {
-				(*copie)[j] = original[i];
+				(*copie)[j] = original[i];  //aici mai puteai sa scri *(original+i) inloc de original[i]...se observa dereferentierea prin indexare.
 				(*copie)[j].tip = (char*)malloc(sizeof(char) * (strlen(original[i].tip) + 1));
 				strcpy_s((*copie)[j].tip, strlen(original[i].tip) + 1, original[i].tip);
 				j++;
 			}
 		}
-	
-
-	return (*copie);
-
-
 
 }
 
@@ -108,7 +103,8 @@ int main() {
 	caieteDiv[0] = initializare("Mate", 150);
 	caieteDiv[1] = initializare("Rom", 100);
 	caieteDiv[2] = initializare("Mate", 60);
-
+	printf("Toate caietele: \n");
+	afisareVector(caieteDiv, nrCaiete);
 
 	int nrCaietePeste80DeFile;
 	struct Caiet* caietePeste80File;
@@ -121,6 +117,8 @@ int main() {
 	copaizaCaieteV2(caieteDiv, nrCaiete, "Mate", &caieteDeMate, &dimCaieteDeMate);
 	printf("\nAfisam doar caietele de mate: \n");
 	afisareVector(caieteDeMate, dimCaieteDeMate);
+	
+	
 	
 	return 0;
 }
