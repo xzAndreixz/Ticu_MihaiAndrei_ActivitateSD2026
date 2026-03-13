@@ -37,6 +37,18 @@ void afisareVector(struct Caiet* a, int dim) {
 	}
 }
 
+struct Caiet* copaizaPrimeleNElemente(struct Caiet* c, int dim, int dimCopiaza) {
+	if (dimCopiaza > dim) { printf("Eroare, nu poti copia mai mult de %d elemente", dim); return 0; }
+	struct Caiet* v = (struct Caiet*)malloc(sizeof(struct Caiet) * dimCopiaza);
+	for (int i = 0; i < dimCopiaza; i++) {
+		v[i] = c[i];
+		v[i].tip = (char*)malloc(sizeof(char) * (strlen(c[i].tip) + 1));
+	}
+
+	return v;
+}
+
+
 
 int main() {
 
