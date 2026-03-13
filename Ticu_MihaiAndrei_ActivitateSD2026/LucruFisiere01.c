@@ -27,6 +27,22 @@ void afisareVectorMasini(Masina* m, int dim) {
 }
 
 
+void adaugareVectorMasini(Masina** m, int* nrMasini, Masina masinaNoua) {
+
+	Masina* aux = (Masina*)malloc(sizeof(Masina) * ((*nrMasini) + 1));
+	for (int i = 0; i < (*nrMasini); i++) {
+		aux[i] = (*m)[i];
+	}
+	aux[(*nrMasini)] = masinaNoua;  //shallow copy
+
+	free((*m));
+	(*m) = aux;
+	(*nrMasini)++;
+
+}
+
+
+
 
 
 
