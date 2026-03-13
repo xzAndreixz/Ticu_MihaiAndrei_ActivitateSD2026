@@ -26,6 +26,11 @@ struct Caiet initializare(const char* tip, int nrPg) {
 	return c;
 }
 
+void afisare(struct Caiet c) {
+	printf("Tip: %s\n", c.tip);
+	printf("Nr. pagini: %d\n\n", c.nrPg);
+}
+
 
 int main() {
 
