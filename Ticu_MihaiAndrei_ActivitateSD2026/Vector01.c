@@ -70,6 +70,32 @@ struct Caiet* copaizaCaiete(struct Caiet* c, int dim, int nrPg,int* dimVcopiat){
 	(*dimVcopiat) = mem;
 	return vector;
 }
+
+void copaizaCaieteV2(struct Caiet* original, int dim, const char* tip, struct Caiet** copie, int* dimReturnata) {
+	int mem = 0;
+	for (int i = 0; i < dim; i++) {
+		if (strcmp(original[i].tip, tip) == 0) mem++;
+	}
+	
+		int j = 0;
+		(*copie) = (struct Caiet*)malloc(sizeof(struct Caiet) * mem);
+		for (int i = 0; i < dim; i++) {
+			if (strcmp(original[i].tip, tip) == 0) {
+				(*copie)[j] = original[i];
+				(*copie)[j].tip = (char*)malloc(sizeof(char) * (strlen(original[i].tip) + 1));
+				strcpy_s((*copie)[j].tip, strlen(original[i].tip) + 1, original[i].tip);
+				j++;
+			}
+		}
+	
+	*dimReturnata = mem;
+	return (*copie);
+
+
+
+}
+
+
 int main() {
 	int nrCaiete = 3;
 	struct Caiet* caieteDiv = (struct Caiet*)malloc(sizeof(struct Caiet) * nrCaiete);
@@ -85,8 +111,11 @@ int main() {
 	printf("Toate aceste caiete au peste 80 de file: \n");
 	afisareVector(caietePeste80File, nrCaietePeste80DeFile);
 	
-
-
+	int dimCaieteDeMate = 0;
+	struct Caiet* caieteDeMate;
+	copaizaCaieteV2(caieteDiv, nrCaiete, "Mate", &caieteDeMate, &dimCaieteDeMate);
+	printf("\nAfisam doar caietele de mate: \n");
+	afisareVector(caieteDeMate, dimCaieteDeMate);
 	
 	return 0;
 }
