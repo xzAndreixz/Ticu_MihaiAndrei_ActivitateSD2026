@@ -54,6 +54,18 @@ void dezalocare(Stick* s) {
 	}
 }
 
+Stick copiereDeep(Stick s) {
+	Stick copie;
+	copie = s;
+	copie.model = (char*)malloc(sizeof(char) * (strlen(s.model) + 1));
+	strcpy(copie.model, s.model);
+	return copie;
+}
+void copiereDeepDejaInitializat(Stick* undeCopiezi, Stick deUnde) {
+	dezalocare(undeCopiezi);
+	(*undeCopiezi) = copiereDeep(deUnde);
+	
+}
 
 int main() {
 
