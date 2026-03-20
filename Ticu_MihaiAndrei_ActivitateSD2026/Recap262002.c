@@ -103,6 +103,37 @@ void dezalocareVector(Stick** v, int* dimV) {
 	
 }
 
+void stergereElDupaIndex(Stick** v,int* dimV ,int pozitieSters) {
+	if ((*v) != NULL) {
+		if ((*dimV) > pozitieSters) {
+			Stick* aux = (Stick*)malloc(sizeof(Stick) * (*dimV - 1));
+			for (int i = 0; i < (*dimV); i++) {
+
+				if (i < pozitieSters) {
+					aux[i] = (*v)[i];
+				}
+				else {
+					if (i > pozitieSters) {
+						aux[i - 1] = (*v)[i];
+					}
+					else {
+						dezalocare(&((*v)[i]));
+					}
+				}
+			}
+			free((*v));
+			(*v) = aux;
+
+			(*dimV)--;
+		}
+		else {
+			printf("Numar maxim elemente %d. Tu ai dat %d\n", (*dimV), pozitieSters);
+		}
+	}
+	else {
+		printf("Nu ai ce sterge, vectorul nu are elemente!\n");
+	}
+}
 
 int main() {
 
@@ -117,9 +148,15 @@ int main() {
 	introducereInVector(&vector, s2, &n);
 	introducereInVector(&vector, s3, &n);
 	introducereInVector(&vector, s1, &n);
-
+	
 	afisareVector(vector, n);
 	//afisare(*(vector));
+
+	stergereElDupaIndex(&vector, &n, 22);
+	printf("Dupa stergerea elementului!\n");
+	afisareVector(vector, n);
+	
+
 	dezalocareVector(&vector, &n);
 	afisareVector(vector, n);
 
