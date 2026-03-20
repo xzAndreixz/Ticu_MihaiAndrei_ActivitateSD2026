@@ -156,7 +156,17 @@ void inserareInLista(Nod** prim, Stick stickInserat) {
 
 
 }
+void afisareLista(Nod* prim) {
 
+	if (prim != NULL) {
+		printf("Lista nu este goala\n");
+	}
+	else {
+		printf("Lista este goala\n");
+	}
+
+
+}
 
 
 int main() {
@@ -164,7 +174,7 @@ int main() {
 	Nod* cap = NULL;
 	Stick s1 = initializare(512, 130, "Samsung");
 	inserareInLista(&cap, s1);
-	
+	afisareLista(cap);
 
 	return 0;
 
