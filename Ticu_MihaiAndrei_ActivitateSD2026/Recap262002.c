@@ -64,6 +64,28 @@ void copiereDeep(Stick* destinatie, Stick sursa) {
 }
 
 
+void introducereInVector(Stick** vector, Stick introduc, int* dimVect) {
+	Stick* aux = (Stick*)malloc(sizeof(Stick) * ((*dimVect)+1));
+	int i = 0;
+	if ((*vector) != NULL) {
+		for (i = 0; i < (*dimVect); i++) {
+			aux[i] = (*vector)[i];
+		}
+		free((*vector));
+	}
+	aux[i] = introduc;
+	aux[i].model = (char*)malloc(sizeof(char) * (strlen(introduc.model) + 1));
+	strcpy(aux[i].model, introduc.model);
+	(*vector) = aux;  
+	(*dimVect)++;
+}
+
+void afisareVector(Stick* vector, int dim) {
+	for (int i = 0; i < dim; i++) {
+		afisare(vector[i]);
+	}
+}
+
 
 int main() {
 
@@ -72,13 +94,15 @@ int main() {
 	Stick s2 = initializare(16, 10, "W");
 	Stick s3 = initializare(8, 10, "Apacer");
 
-	afisare(s1);
-	copiereDeep(&s2, s1);
-	free(s2.model);
-	afisare(s1);
+	Stick* vector = NULL;
+	int n = 0;
+	introducereInVector(&vector, s1, &n);
+	introducereInVector(&vector, s2, &n);
+	introducereInVector(&vector, s3, &n);
+	introducereInVector(&vector, s1, &n);
 
-	afisare(s2);
-	afisare(s3);
+	afisareVector(vector, n);
+
 
 
 
