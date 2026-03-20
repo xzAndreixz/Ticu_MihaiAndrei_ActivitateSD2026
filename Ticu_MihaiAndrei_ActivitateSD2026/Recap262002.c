@@ -81,9 +81,26 @@ void introducereInVector(Stick** vector, Stick introduc, int* dimVect) {
 }
 
 void afisareVector(Stick* vector, int dim) {
-	for (int i = 0; i < dim; i++) {
-		afisare(vector[i]);
+	if (vector != NULL) {
+		for (int i = 0; i < dim; i++) {
+			afisare(vector[i]);
+		}
 	}
+	else {
+		printf("Vectorul nu contine date!");
+	}
+}
+
+void dezalocareVector(Stick** v, int* dimV) {
+	if ((*v) != NULL) {
+	for (int i = 0; i < (*dimV); i++) {
+		dezalocare(&((*v)[i]));
+	}
+	free(*v);
+	(*v) = NULL;
+	(*dimV) = 0;
+	}
+	
 }
 
 
@@ -102,8 +119,9 @@ int main() {
 	introducereInVector(&vector, s1, &n);
 
 	afisareVector(vector, n);
-
-
+	//afisare(*(vector));
+	dezalocareVector(&vector, &n);
+	afisareVector(vector, n);
 
 
 	return 0;
