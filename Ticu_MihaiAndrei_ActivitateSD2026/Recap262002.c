@@ -54,18 +54,16 @@ void dezalocare(Stick* s) {
 	}
 }
 
-Stick copiereDeep(Stick s) {
-	Stick copie;
-	copie = s;
-	copie.model = (char*)malloc(sizeof(char) * (strlen(s.model) + 1));
-	strcpy(copie.model, s.model);
-	return copie;
+void copiereDeep(Stick* destinatie, Stick sursa) {
+	if (destinatie->model != NULL) {
+		free(destinatie->model);
+	}
+	(*destinatie) = sursa;
+	destinatie->model = (char*)malloc(sizeof(char) * (strlen(sursa.model) + 1));
+	strcpy(destinatie->model, sursa.model);
 }
-void copiereDeepDejaInitializat(Stick* undeCopiezi, Stick deUnde) {
-	dezalocare(undeCopiezi);
-	(*undeCopiezi) = copiereDeep(deUnde);
-	
-}
+
+
 
 int main() {
 
@@ -75,7 +73,8 @@ int main() {
 	Stick s3 = initializare(8, 10, "Apacer");
 
 	afisare(s1);
-	dezalocare(&s1);
+	copiereDeep(&s2, s1);
+	free(s2.model);
 	afisare(s1);
 
 	afisare(s2);
