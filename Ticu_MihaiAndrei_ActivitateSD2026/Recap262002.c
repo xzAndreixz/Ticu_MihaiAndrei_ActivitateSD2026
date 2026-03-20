@@ -134,16 +134,37 @@ void stergereElDupaIndex(Stick** v,int* dimV ,int pozitieSters) {
 
 typedef struct Nod {
 	Stick informatiiStick;
-	struct Nod* next;
+	struct Nod* urm;
 
 }Nod;
+
+void inserareInLista(Nod** prim, Stick stickInserat) {
+	
+	Nod* q = (Nod*)malloc(sizeof(Nod));
+	q->informatiiStick = stickInserat;
+	q->urm = NULL;
+	
+	if ((*prim) == NULL) {
+		(*prim) = q;
+	}
+	else {
+		Nod* p = (*prim);
+		while (p->urm != NULL)
+			p = p->urm;
+		p->urm = q;
+	}
+
+
+}
+
+
 
 int main() {
 
 	Nod* cap = NULL;
-
+	Stick s1 = initializare(512, 130, "Samsung");
+	inserareInLista(&cap, s1);
 	
-
 
 	return 0;
 
