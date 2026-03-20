@@ -26,7 +26,7 @@ Stick initializare(int capacitate, float viteza, const char* model) {
 
 
 void afisare(Stick s) {
-	printf("\n");
+	
 	if (s.capacitate > 0)
 		printf("Capacitatea: %d\n", s.capacitate);
 	else 
@@ -47,6 +47,12 @@ void afisare(Stick s) {
 
 }
 
+void dezalocare(Stick* s) {
+	if ((*s).model != NULL) {
+		free((*s).model);
+		(*s).model = NULL;
+	}
+}
 
 
 int main() {
@@ -57,6 +63,9 @@ int main() {
 	Stick s3 = initializare(8, 10, "Apacer");
 
 	afisare(s1);
+	dezalocare(&s1);
+	afisare(s1);
+
 	afisare(s2);
 	afisare(s3);
 
