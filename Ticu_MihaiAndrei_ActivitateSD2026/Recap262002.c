@@ -25,6 +25,30 @@ Stick initializare(int capacitate, float viteza, const char* model) {
 
 
 
+void afisare(Stick s) {
+	printf("\n");
+	if (s.capacitate > 0)
+		printf("Capacitatea: %d\n", s.capacitate);
+	else 
+		printf("Capacitatea: Necunoscuta\n");
+	
+	if (s.viteza > 0)
+		printf("Viteza: %.1f\n", s.viteza);
+	else
+		printf("Viteza: Necunoscuta\n");
+
+	if (s.model != NULL && strlen(s.model) > 0) {
+		printf("Model: %s\n", s.model);
+	}
+	else {
+		printf("Model: Necunoscut\n");
+	}
+	printf("\n");
+
+}
+
+
+
 int main() {
 
 
@@ -32,7 +56,9 @@ int main() {
 	Stick s2 = initializare(16, 10, "W");
 	Stick s3 = initializare(8, 10, "Apacer");
 
-
+	afisare(s1);
+	afisare(s2);
+	afisare(s3);
 
 
 
