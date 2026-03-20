@@ -23,8 +23,6 @@ Stick initializare(int capacitate, float viteza, const char* model) {
 	return i;
 }
 
-
-
 void afisare(Stick s) {
 	
 	if (s.capacitate > 0)
@@ -62,7 +60,6 @@ void copiereDeep(Stick* destinatie, Stick sursa) {
 	destinatie->model = (char*)malloc(sizeof(char) * (strlen(sursa.model) + 1));
 	strcpy(destinatie->model, sursa.model);
 }
-
 
 void introducereInVector(Stick** vector, Stick introduc, int* dimVect) {
 	Stick* aux = (Stick*)malloc(sizeof(Stick) * ((*dimVect)+1));
@@ -135,30 +132,17 @@ void stergereElDupaIndex(Stick** v,int* dimV ,int pozitieSters) {
 	}
 }
 
+typedef struct Nod {
+	Stick informatiiStick;
+	struct Nod* next;
+
+}Nod;
+
 int main() {
 
+	Nod* cap = NULL;
 
-	Stick s1 = initializare(64, 30, "Samsung");
-	Stick s2 = initializare(16, 10, "W");
-	Stick s3 = initializare(8, 10, "Apacer");
-
-	Stick* vector = NULL;
-	int n = 0;
-	introducereInVector(&vector, s1, &n);
-	introducereInVector(&vector, s2, &n);
-	introducereInVector(&vector, s3, &n);
-	introducereInVector(&vector, s1, &n);
 	
-	afisareVector(vector, n);
-	//afisare(*(vector));
-
-	stergereElDupaIndex(&vector, &n, 22);
-	printf("Dupa stergerea elementului!\n");
-	afisareVector(vector, n);
-	
-
-	dezalocareVector(&vector, &n);
-	afisareVector(vector, n);
 
 
 	return 0;
