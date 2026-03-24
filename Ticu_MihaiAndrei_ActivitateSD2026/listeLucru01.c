@@ -35,6 +35,15 @@ void afisareLista(Nod* p) {
 		}
 	}
 }
+
+void adaugaInceput(Nod** prim, int x) {
+	Nod* nou = (Nod*)malloc(sizeof(Nod));
+	nou->nr = x;
+	nou->urm = (*prim);
+	(*prim) = nou;
+	
+}
+
 int n = 5, i, a;
 int main() {
 
@@ -43,7 +52,8 @@ int main() {
 	for (i = 0; i < n; i++) {
 		printf("Intorduceti in lista: ");
 		scanf_s("%d", &a);
-		inserareLista(&p, a);
+		//inserareLista(&p, a);
+		adaugaInceput(&p, a);
 	}
 
 	afisareLista(p);
