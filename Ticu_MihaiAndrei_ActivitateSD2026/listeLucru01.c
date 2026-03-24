@@ -44,6 +44,14 @@ void adaugaInceput(Nod** prim, int x) {
 	
 }
 
+void incrementareCuOUnitate(Nod** prim) {
+	Nod* pas = (*prim);
+	while (pas != NULL) {
+		pas->nr = pas->nr + 1;
+		pas = pas->urm;
+	}
+}
+
 int n = 5, i, a;
 int main() {
 
@@ -55,7 +63,7 @@ int main() {
 		//inserareLista(&p, a);
 		adaugaInceput(&p, a);
 	}
-
+	incrementareCuOUnitate(&p);
 	afisareLista(p);
 
 	return 0;
