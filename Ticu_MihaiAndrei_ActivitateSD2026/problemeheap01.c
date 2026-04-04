@@ -114,7 +114,8 @@ int main() {
 	//afisareMasina(m);
 
 	Heap h1 = intializareHeap(10);
-	
+	Heap h2 = citireHeapDeMasiniDinFisier("masiniHeap.txt");
+	afisareHeap(h2);
 
 	return 0;
 }
