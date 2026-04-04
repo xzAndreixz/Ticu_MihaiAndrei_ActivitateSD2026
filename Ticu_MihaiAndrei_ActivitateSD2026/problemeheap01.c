@@ -23,6 +23,20 @@ void afisareMasina(Masina m) {
 	printf("Consum: %.2f\n", m.consum);
 }
 
+typedef struct Heap {
+	Masina* elemente;
+	int lungime;
+	int nrEl;
+
+}Heap;
+
+Heap intializare(int lungime) {
+	Heap h;
+	h.elemente = (Masina*)malloc(sizeof(Masina)*lungime);
+	h.lungime = lungime;
+	h.nrEl = 0;
+	return h;
+}
 
 
 int main() {
@@ -30,6 +44,8 @@ int main() {
 	Masina m;
 	m = initializare(110, 5, 4.9);
 	afisareMasina(m);
+
+	Heap h1 = intializare(10);
 
 
 	return 0;
