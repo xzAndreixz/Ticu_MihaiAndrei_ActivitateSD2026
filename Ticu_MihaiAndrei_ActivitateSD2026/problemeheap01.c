@@ -9,7 +9,7 @@ typedef struct Masina {
 	float consum;
 }Masina;
 
-Masina initializare(int cP, int nrLocuri, float consum) {
+Masina initializareMasina(int cP, int nrLocuri, float consum) {
 	Masina m;
 	m.cP = cP;
 	m.nrLocuri = nrLocuri;
@@ -30,22 +30,47 @@ typedef struct Heap {
 
 }Heap;
 
-Heap intializare(int lungime) {
+Heap intializareHeap(int lungime) {
 	Heap h;
 	h.elemente = (Masina*)malloc(sizeof(Masina)*lungime);
-	h.lungime = lungime;
-	h.nrEl = 0;
+	h.lungime = lungime;  //pentru cate am alocat memorie
+	h.nrEl = 0;  //cate avem in heap
 	return h;
 }
+
+void filtreazaHeap(Heap heap, int pozNod) {
+
+	int stg = 2 * pozNod + 1;
+	int dr = 2 * pozNod + 2;
+	int max = pozNod;
+	if (stg<heap.nrEl && heap.elemente[stg].consum>heap.elemente[max].consum) {
+		max = stg;
+	}
+	if (dr<heap.nrEl && heap.elemente[dr].consum>heap.elemente[max].consum) {
+		max = dr;
+	}
+
+	if (max != pozNod) {
+		Masina temp = heap.elemente[pozNod];
+		heap.elemente[pozNod] = heap.elemente[max];
+		heap.elemente[max] = temp;
+		filtreazaHeap(heap, max);
+	}
+
+
+
+}
+
+
 
 
 int main() {
 
 	Masina m;
-	m = initializare(110, 5, 4.9);
+	m = initializareMasina(110, 5, 4.9);
 	afisareMasina(m);
 
-	Heap h1 = intializare(10);
+	Heap h1 = intializareHeap(10);
 
 
 	return 0;
