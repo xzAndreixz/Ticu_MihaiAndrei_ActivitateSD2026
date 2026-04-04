@@ -61,7 +61,43 @@ void filtreazaHeap(Heap heap, int pozNod) {
 
 }
 
+Masina citireMasinaDinFisier(FILE* file) {
+	char buffer[100];
+	char sep[3]=",\n";
+	fgets(buffer, 100, file);
+	Masina m1;
+	m1.cP = atoi(strtok(buffer,sep));
+	m1.nrLocuri = atoi(strtok(NULL, sep));
+	m1.consum = atof(strtok(NULL, sep));
 
+	return m1;
+
+}
+
+Heap citireHeapDeMasiniDinFisier(const char* numeFisier) {
+	FILE* f = fopen(numeFisier, "r");
+
+	int n = 0;
+	char buffer[100];
+	while (fgets(buffer, 100, f)) n++;
+	rewind(f);
+
+	Heap h = intializareHeap(n);
+
+	for (int i = 0; i < n; i++) {
+		h.elemente[i] = citireMasinaDinFisier(f);
+		h.nrEl++;
+	}
+
+	for (int i = n / 2 - 1; i >= 0; i--) {
+		filtreazaHeap(h, i);
+	}
+
+	fclose(f);
+	return h;
+
+
+}
 
 
 int main() {
