@@ -1,3 +1,4 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -61,6 +62,12 @@ void filtreazaHeap(Heap heap, int pozNod) {
 
 }
 
+void afisareHeap(Heap h) {
+	for (int i = 0; i < h.nrEl; i++) {
+		afisareMasina(h.elemente[i]);
+	}
+}
+
 Masina citireMasinaDinFisier(FILE* file) {
 	char buffer[100];
 	char sep[3]=",\n";
@@ -104,10 +111,10 @@ int main() {
 
 	Masina m;
 	m = initializareMasina(110, 5, 4.9);
-	afisareMasina(m);
+	//afisareMasina(m);
 
 	Heap h1 = intializareHeap(10);
-
+	
 
 	return 0;
 }
