@@ -115,6 +115,17 @@ Masina extrageMasina(Heap* h) {
 	return rezultat;
 }
 
+void sortareCrescator(Heap h) {
+
+	int dimInitiala = h.dimensiune;
+
+	while (h.dimensiune > 1) {
+		extrageMasina(&h);
+	}
+
+	h.dimensiune = dimInitiala;
+}
+
 
 int main() {
 
@@ -132,15 +143,10 @@ int main() {
 		filtarereHeapMax(h, i);
 	}
 
-	afisareHeap(h);
-	printf("\n\n-----------------------------------");
-	printf("\nMasina extrasa:\n");
-	Masina m = extrageMasina(&h);
-	afisareMasina(m);
 
-	printf("\nHeap dupa extragere:\n");
 	afisareHeap(h);
-
+	
+	
 
 
 	return 0;
