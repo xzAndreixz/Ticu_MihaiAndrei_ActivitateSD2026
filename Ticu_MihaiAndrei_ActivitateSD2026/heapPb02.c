@@ -18,7 +18,9 @@ Masina initializareMasina(int id, int nrUsi, float pret, const char* model, cons
 	m.nrUsi = nrUsi;
 	m.pret = pret;
 	m.model = (char*)malloc(sizeof(char) * (1 + strlen(model)));
+	strcpy_s(m.model, 1 + strlen(model), model);
 	m.numeSofer = (char*)malloc(sizeof(char) * (1 + strlen(numeSofer)));
+	strcpy_s(m.numeSofer, 1 + strlen(numeSofer), numeSofer);
 	return m;
 }
 
@@ -85,6 +87,7 @@ void afisareHeap(Heap h) {
 		printf("Pozitia %d:\n", i);
 		afisareMasina(h.vectorMasini[i]);
 	}
+}
 
 int main() {
 
@@ -102,6 +105,7 @@ int main() {
 		filtarereHeapMax(h, i);
 	}
 
+	afisareHeap(h);
 
 
 	return 0;
