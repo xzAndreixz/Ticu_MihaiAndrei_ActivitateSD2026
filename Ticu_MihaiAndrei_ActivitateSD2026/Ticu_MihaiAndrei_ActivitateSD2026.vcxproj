@@ -20,8 +20,21 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="andreiPb01.c" />
-    <ClCompile Include="ProblemeA01.cpp" />
-    <ClCompile Include="seminar01.cpp" />
+    <ClCompile Include="heapPb02.c" />
+    <ClCompile Include="Lfisier02.c" />
+    <ClCompile Include="listeLucru01.c" />
+    <ClCompile Include="LSD.c" />
+    <ClCompile Include="LSI00.c" />
+    <ClCompile Include="LucruFisiere01.c" />
+    <ClCompile Include="Problema02malloc.c" />
+    <ClCompile Include="ProblemeA01.c" />
+    <ClCompile Include="problemeheap01.c" />
+    <ClCompile Include="Recap262002.c" />
+    <ClCompile Include="seminar01.c" />
+    <ClCompile Include="Vector01.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="masiniHeap.txt" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

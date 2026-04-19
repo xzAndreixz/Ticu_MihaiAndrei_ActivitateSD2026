@@ -30,6 +30,14 @@ typedef struct Heap {
 }Heap;
 
 
+Heap intializareHeap(int capacitate) {
+	Heap h;
+	h.capacitate = capacitate;
+	h.dimensiune = 0;
+	h.vectorMasini = (Masina*)malloc(sizeof(Masina) * capacitate);
+
+	return h;
+}
 
 
 

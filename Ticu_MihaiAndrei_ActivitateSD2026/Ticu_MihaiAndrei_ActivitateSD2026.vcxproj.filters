@@ -18,11 +18,44 @@
     <ClCompile Include="andreiPb01.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="seminar01.cpp">
+    <ClCompile Include="seminar01.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ProblemeA01.cpp">
+    <ClCompile Include="ProblemeA01.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Problema02malloc.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector01.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LucruFisiere01.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Lfisier02.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LSI00.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LSD.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Recap262002.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="listeLucru01.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="problemeheap01.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="heapPb02.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="masiniHeap.txt" />
   </ItemGroup>
 </Project>
