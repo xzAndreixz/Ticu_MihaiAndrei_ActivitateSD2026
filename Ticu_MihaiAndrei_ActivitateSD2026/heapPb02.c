@@ -133,7 +133,13 @@ int main() {
 	}
 
 	afisareHeap(h);
-	
+	printf("\n\n-----------------------------------");
+	printf("\nMasina extrasa:\n");
+	Masina m = extrageMasina(&h);
+	afisareMasina(m);
+
+	printf("\nHeap dupa extragere:\n");
+	afisareHeap(h);
 
 
 
