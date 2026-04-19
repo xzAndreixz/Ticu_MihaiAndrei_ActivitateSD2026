@@ -80,6 +80,11 @@ void filtarereHeapMax(Heap h, int pozitieNod) {
 
 }
 
+void afisareHeap(Heap h) {
+	for (int i = 0; i < h.dimensiune; i++) {
+		printf("Pozitia %d:\n", i);
+		afisareMasina(h.vectorMasini[i]);
+	}
 
 int main() {
 
