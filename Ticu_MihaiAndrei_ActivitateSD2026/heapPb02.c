@@ -8,17 +8,17 @@ typedef struct Masina {
 	float pret;
 	char* model;
 	char* numeSofer;
-	unsigned char serie;
+
 }Masina;
 
-void initializareMasina(int id, int nrUsi, float pret, const char* model, const char* numeSofer, unsigned char serie) {
+Masina initializareMasina(int id, int nrUsi, float pret, const char* model, const char* numeSofer) {
 	Masina m;
 	m.id = id;
 	m.nrUsi = nrUsi;
 	m.pret = pret;
 	m.model = (char*)malloc(sizeof(char) * (1 + strlen(model)));
 	m.numeSofer = (char*)malloc(sizeof(char) * (1 + strlen(numeSofer)));
-	m.serie = serie;
+	return m;
 }
 
 typedef struct Heap {
@@ -74,6 +74,18 @@ void filtarereHeapMax(Heap h, int pozitieNod) {
 int main() {
 
 	Heap h = initializareHeap(5);
+
+	h.vectorMasini[0] = initializareMasina(1, 4, 12000, "BMW", "Ana");
+	h.vectorMasini[1] = initializareMasina(2, 2, 8000, "Audi", "Dan");
+	h.vectorMasini[2] = initializareMasina(3, 4, 15000, "Mercedes", "Ion");
+	h.vectorMasini[3] = initializareMasina(4, 5, 7000, "Dacia", "Maria");
+	h.vectorMasini[4] = initializareMasina(5, 4, 20000, "Tesla", "Radu");
+
+	h.dimensiune = 5;
+
+	for (int i = (h.dimensiune - 2) / 2; i >= 0; i--) {
+		filtarereHeapMax(h, i);
+	}
 
 
 
