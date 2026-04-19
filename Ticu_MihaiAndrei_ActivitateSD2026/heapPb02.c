@@ -21,6 +21,14 @@ void initializareMasina(int id, int nrUsi, float pret, const char* model, const 
 	m.serie = serie;
 }
 
+typedef struct Heap {
+
+	Masina* vectorMasini;
+	int dimensiune;
+	int capacitate;
+
+}Heap;
+
 
 
 
