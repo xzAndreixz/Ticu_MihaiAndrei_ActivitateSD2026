@@ -89,6 +89,33 @@ void afisareHeap(Heap h) {
 	}
 }
 
+
+Masina extrageMasina(Heap* h) {
+	if (h->dimensiune == 0) {
+		Masina m;
+		m.id = -1;
+		m.nrUsi = 0;
+		m.pret = 0;
+		m.model = NULL;
+		m.numeSofer = NULL;
+		return m;
+	}
+
+	Masina rezultat = h->vectorMasini[0];
+
+	h->vectorMasini[0] = h->vectorMasini[h->dimensiune - 1];
+	h->vectorMasini[h->dimensiune - 1] = rezultat;
+
+	h->dimensiune--;
+
+	if (h->dimensiune > 0) {
+		filtarereHeapMax(*h, 0);
+	}
+
+	return rezultat;
+}
+
+
 int main() {
 
 	Heap h = initializareHeap(5);
@@ -106,6 +133,8 @@ int main() {
 	}
 
 	afisareHeap(h);
+	
+
 
 
 	return 0;
