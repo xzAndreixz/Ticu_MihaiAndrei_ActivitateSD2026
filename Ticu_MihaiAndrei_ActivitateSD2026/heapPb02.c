@@ -144,9 +144,12 @@ int main() {
 	}
 
 
+	
+	
+	sortareCrescator(h);
+
+	printf("\nHeap sortat crescator:\n");
 	afisareHeap(h);
-	
-	
 
 
 	return 0;
