@@ -11,6 +11,17 @@ typedef struct Masina {
 	unsigned char serie;
 }Masina;
 
+void initializareMasina(int id, int nrUsi, float pret, const char* model, const char* numeSofer, unsigned char serie) {
+	Masina m;
+	m.id = id;
+	m.nrUsi = nrUsi;
+	m.pret = pret;
+	m.model = (char*)malloc(sizeof(char) * (1 + strlen(model)));
+	m.numeSofer = (char*)malloc(sizeof(char) * (1 + strlen(numeSofer)));
+	m.serie = serie;
+}
+
+
 
 
 
