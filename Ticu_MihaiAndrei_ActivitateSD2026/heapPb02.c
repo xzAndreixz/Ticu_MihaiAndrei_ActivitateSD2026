@@ -11,6 +11,7 @@ typedef struct Masina {
 
 }Masina;
 
+
 Masina initializareMasina(int id, int nrUsi, float pret, const char* model, const char* numeSofer) {
 	Masina m;
 	m.id = id;
@@ -19,6 +20,15 @@ Masina initializareMasina(int id, int nrUsi, float pret, const char* model, cons
 	m.model = (char*)malloc(sizeof(char) * (1 + strlen(model)));
 	m.numeSofer = (char*)malloc(sizeof(char) * (1 + strlen(numeSofer)));
 	return m;
+}
+
+void afisareMasina(Masina m) {
+	printf("Id: %d\n", m.id);
+	printf("Nr usi: %d\n", m.nrUsi);
+	printf("Pret: %.2f\n", m.pret);
+	printf("Model: %s\n", m.model);
+	printf("Nume sofer: %s\n", m.numeSofer);
+	
 }
 
 typedef struct Heap {
