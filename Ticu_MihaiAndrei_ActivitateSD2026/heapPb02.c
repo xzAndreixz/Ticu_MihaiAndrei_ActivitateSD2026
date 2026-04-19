@@ -41,6 +41,36 @@ Heap initializareHeap(int capacitate) {
 
 
 
+
+void filtarereHeapMax(Heap h, int pozitieNod) {
+
+	if (pozitieNod >= 0 && pozitieNod < h.dimensiune) {
+		
+		int stanga = 2 * pozitieNod + 1;
+		int dreapta = stanga + 1;
+		int pozMax = pozitieNod;
+
+		if (stanga < h.dimensiune && h.vectorMasini[stanga].pret > h.vectorMasini[pozMax].pret) {
+			pozMax = stanga;
+		}
+
+		if (dreapta < h.dimensiune && h.vectorMasini[dreapta].pret > h.vectorMasini[pozMax].pret) {
+			pozMax = dreapta;
+		}
+
+		if (pozMax != pozitieNod) {
+			Masina aux = h.vectorMasini[pozitieNod];
+			h.vectorMasini[pozitieNod] = h.vectorMasini[pozMax];
+			h.vectorMasini[pozMax] = aux;
+
+			filtarereHeapMax(h, pozMax);
+		}
+
+	}
+
+}
+
+
 int main() {
 
 	Heap h = initializareHeap(5);
