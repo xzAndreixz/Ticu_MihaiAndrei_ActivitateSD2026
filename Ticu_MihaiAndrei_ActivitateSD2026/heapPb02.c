@@ -30,7 +30,7 @@ typedef struct Heap {
 }Heap;
 
 
-Heap intializareHeap(int capacitate) {
+Heap initializareHeap(int capacitate) {
 	Heap h;
 	h.capacitate = capacitate;
 	h.dimensiune = 0;
@@ -43,6 +43,7 @@ Heap intializareHeap(int capacitate) {
 
 int main() {
 
+	Heap h = initializareHeap(5);
 
 
 
