@@ -44,7 +44,17 @@ int main() {
 	
 	Laptop l1 = initializare("ASUS", 3499.99);
 	afisareLaptop(l1);
-	
+	Laptop l2 = copiazaLaptop(l1);
+	l2.pret = 5000.0f;
+	free(l2.model);
+	l2.model = (char*)malloc(sizeof(char) * (1 + strlen("ACER")));
+	strcpy_s(l2.model, 1 + strlen("ACER"), "ACER");
+
+
+	printf("Merge?\n\n\n");
+	afisareLaptop(l1);
+	printf("\n\n");
+	afisareLaptop(l2);
 
 
 	return 0;
