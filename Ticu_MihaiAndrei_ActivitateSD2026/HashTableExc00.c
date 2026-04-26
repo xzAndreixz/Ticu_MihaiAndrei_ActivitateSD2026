@@ -19,6 +19,9 @@ Laptop initializare(const char* model, float pret) {
 
 
 int main() {
+	
+	Laptop l1 = initializare("ASUS", 3499.99);
+	printf("Model: %s \nPret: %.2f", l1.model, l1.pret);
 
 	
 
