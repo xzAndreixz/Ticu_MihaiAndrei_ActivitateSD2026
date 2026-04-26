@@ -71,6 +71,11 @@ void afisareLista(Nod* lista) {
 	}
 }
 
+typedef struct HashTable {
+	int dim;
+	Nod** vector;
+}HashTable;
+
 
 int main() {
 	
@@ -83,7 +88,7 @@ int main() {
 	strcpy_s(l2.model, 1 + strlen("ACER"), "ACER");
 
 
-	Nod* lista=NULL;
+	Nod* lista=NULL;  //daca nu initializez cu NULL la functia de adaugare in lista intra pe else si da eroare!
 	adaugaLaptopInLista(&lista, l1);
 	adaugaLaptopInLista(&lista, l2);
 	afisareLista(lista);
