@@ -39,6 +39,11 @@ Laptop copiazaLaptop(Laptop l) {
 	return c;
 }
 
+typedef struct Nod {
+	Laptop info;
+	struct Nod* next;
+}Nod;
+
 
 int main() {
 	
