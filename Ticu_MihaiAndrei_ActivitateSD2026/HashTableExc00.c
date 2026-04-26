@@ -77,6 +77,24 @@ typedef struct HashTable {
 }HashTable;
 
 
+HashTable initializareHashTable(int dim) {
+	HashTable h;
+	h.dim = dim;
+	h.vector = (Nod**)malloc(sizeof(Nod*) * dim);
+	for (int i = 0; i < dim; i++) {
+		h.vector[i] = NULL;
+	}
+
+	return h;
+}
+
+
+int calculeazaHash(const char* model, int dim) {
+	return strlen(model) % dim;
+}
+
+
+
 int main() {
 	
 	Laptop l1 = initializare("ASUS", 3499.99);
