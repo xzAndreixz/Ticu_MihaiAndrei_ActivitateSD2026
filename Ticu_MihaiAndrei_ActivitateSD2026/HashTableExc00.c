@@ -22,6 +22,14 @@ void afisareLaptop(Laptop l) {
 
 }
 
+void dezalocareLaptop(Laptop* l) {
+	if (l->model != NULL) {
+		free(l->model);
+		l->model = NULL;
+	}
+	l->pret = 0;
+}
+
 
 int main() {
 	
