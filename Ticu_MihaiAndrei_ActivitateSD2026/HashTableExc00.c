@@ -30,12 +30,22 @@ void dezalocareLaptop(Laptop* l) {
 	l->pret = 0;
 }
 
+Laptop copiazaLaptop(Laptop l) {
+	Laptop c;
+	c.model = (char*)malloc(sizeof(char) * (strlen(l.model) + 1));
+	strcpy_s(c.model, 1 + strlen(l.model), l.model);
+	c.pret = l.pret;
+
+	return c;
+}
+
 
 int main() {
 	
 	Laptop l1 = initializare("ASUS", 3499.99);
 	afisareLaptop(l1);
 	
+
 
 	return 0;
 }
