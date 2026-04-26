@@ -98,6 +98,14 @@ void inserareLaptopInHashTable(HashTable h, Laptop l) {
 	adaugaLaptopInLista(&h.vector[poz], l);
 }
 
+void afiseazaHashTable(HashTable h) {
+	for (int i = 0; i < h.dim; i++) {
+		printf("Lista %d:/n", i);
+		afisareLista(h.vector[i]);
+		printf("\n");
+	}
+}
+
 int main() {
 	
 	Laptop l1 = initializare("ASUS", 3499.99);
@@ -118,9 +126,7 @@ int main() {
 	HashTable h;
 	h = initializareHashTable(dim);
 
-	int index = calculeazaHash(l1.model, dim);
-	printf("Index: %d", index);
-
+	
 
 	return 0;
 }
