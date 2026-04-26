@@ -16,13 +16,17 @@ Laptop initializare(const char* model, float pret) {
 	return r;
 }
 
+void afisareLaptop(Laptop l) {
+	printf("Model: %s\n", l.model);
+	printf("Pret: %.2f\n", l.pret);
+
+}
 
 
 int main() {
 	
 	Laptop l1 = initializare("ASUS", 3499.99);
-	printf("Model: %s \nPret: %.2f", l1.model, l1.pret);
-
+	afisareLaptop(l1);
 	
 
 	return 0;
