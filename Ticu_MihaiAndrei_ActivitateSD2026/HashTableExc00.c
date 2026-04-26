@@ -45,6 +45,26 @@ typedef struct Nod {
 }Nod;
 
 
+void adaugaLaptopInLista(Nod** lista, Laptop laptopNou) {
+	Nod* nodNou = (Nod*)malloc(sizeof(Nod));
+	nodNou->info = copiazaLaptop(laptopNou);
+	nodNou->next = NULL;
+
+	if (*lista == NULL) {
+		*lista = nodNou;
+	}
+	else {
+		Nod* pas = *lista;
+
+		while (pas->next != NULL) {
+			pas = pas->next;
+		}
+		pas->next = nodNou;
+
+	}
+
+}
+
 int main() {
 	
 	Laptop l1 = initializare("ASUS", 3499.99);
