@@ -83,10 +83,10 @@ int main() {
 	strcpy_s(l2.model, 1 + strlen("ACER"), "ACER");
 
 
-	Nod* lista;
+	Nod* lista=NULL;
 	adaugaLaptopInLista(&lista, l1);
 	adaugaLaptopInLista(&lista, l2);
-
+	afisareLista(lista);
 
 	return 0;
 }
