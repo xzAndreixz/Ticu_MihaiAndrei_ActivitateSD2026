@@ -99,11 +99,16 @@ void inserareLaptopInHashTable(HashTable h, Laptop l) {
 }
 
 void afiseazaHashTable(HashTable h) {
-	for (int i = 0; i < h.dim; i++) {
-		printf("Lista %d:/n", i);
-		afisareLista(h.vector[i]);
-		printf("\n");
-	}
+    for (int i = 0; i < h.dim; i++) {
+        printf("Lista %d:\n", i);
+
+        if (h.vector[i] == NULL) {
+            printf("Gol\n");
+        } else {
+            afisareLista(h.vector[i]);
+            printf("\n");
+        }
+    }
 }
 
 int main() {
@@ -126,7 +131,9 @@ int main() {
 	HashTable h;
 	h = initializareHashTable(dim);
 
-	
+	inserareLaptopInHashTable(h, l1);
+	inserareLaptopInHashTable(h, l2);
+	afiseazaHashTable(h);
 
 	return 0;
 }
