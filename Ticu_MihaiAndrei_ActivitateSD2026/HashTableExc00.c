@@ -64,7 +64,12 @@ void adaugaLaptopInLista(Nod** lista, Laptop laptopNou) {
 	}
 
 }
-
+void afisareLista(Nod* lista) {
+	while (lista != NULL) {
+		afisareLaptop(lista->info);
+		lista = lista->next;
+	}
+}
 
 
 int main() {
