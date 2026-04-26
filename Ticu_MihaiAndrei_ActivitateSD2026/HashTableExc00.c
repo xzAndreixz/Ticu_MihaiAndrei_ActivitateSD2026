@@ -115,7 +115,7 @@ int main() {
 	HashTable h;
 	h = initializareHashTable(dim);
 
-	int index = calculeazaHash(l2.model, dim);
+	int index = calculeazaHash(l1.model, dim);
 	printf("Index: %d", index);
 
 
