@@ -93,7 +93,10 @@ int calculeazaHash(const char* model, int dim) {
 	return strlen(model) % dim;
 }
 
-
+void inserareLaptopInHashTable(HashTable h, Laptop l) {
+	int poz = calculeazaHash(l.model, h.dim);
+	adaugaLaptopInLista(&h.vector[poz], l);
+}
 
 int main() {
 	
