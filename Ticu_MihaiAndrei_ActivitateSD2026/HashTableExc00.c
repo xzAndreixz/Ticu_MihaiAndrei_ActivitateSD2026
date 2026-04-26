@@ -102,14 +102,22 @@ int main() {
 	Laptop l2 = copiazaLaptop(l1);
 	l2.pret = 5000.0f;
 	free(l2.model);
-	l2.model = (char*)malloc(sizeof(char) * (1 + strlen("ACER")));
-	strcpy_s(l2.model, 1 + strlen("ACER"), "ACER");
+	l2.model = (char*)malloc(sizeof(char) * (1 + strlen("LENOVO")));
+	strcpy_s(l2.model, 1 + strlen("LENOVO"), "LENOVO");
 
 
 	Nod* lista=NULL;  //daca nu initializez cu NULL la functia de adaugare in lista intra pe else si da eroare!
 	adaugaLaptopInLista(&lista, l1);
 	adaugaLaptopInLista(&lista, l2);
 	afisareLista(lista);
+
+	int dim = 4;
+	HashTable h;
+	h = initializareHashTable(dim);
+
+	int index = calculeazaHash(l2.model, dim);
+	printf("Index: %d", index);
+
 
 	return 0;
 }
