@@ -51,7 +51,7 @@ void adaugaLaptopInLista(Nod** lista, Laptop laptopNou) {
 	nodNou->next = NULL;
 
 	if (*lista == NULL) {
-		*lista = nodNou;
+		*lista = nodNou;  //folosesti ** pentru cazul in care lista ar fi goala si trebuie sa poti initializa inceputul listei :)!
 	}
 	else {
 		Nod* pas = *lista;
@@ -65,6 +65,8 @@ void adaugaLaptopInLista(Nod** lista, Laptop laptopNou) {
 
 }
 
+
+
 int main() {
 	
 	Laptop l1 = initializare("ASUS", 3499.99);
@@ -76,10 +78,9 @@ int main() {
 	strcpy_s(l2.model, 1 + strlen("ACER"), "ACER");
 
 
-	printf("Merge?\n\n\n");
-	afisareLaptop(l1);
-	printf("\n\n");
-	afisareLaptop(l2);
+	Nod* lista;
+	adaugaLaptopInLista(&lista, l1);
+	adaugaLaptopInLista(&lista, l2);
 
 
 	return 0;
