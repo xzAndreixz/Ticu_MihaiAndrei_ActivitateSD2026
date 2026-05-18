@@ -63,6 +63,12 @@ void adaugaMasiniInVector(Masina** masini, int* nrMasini, Masina m) {
 
 }
 
+void afisareVectorMasini(Masina* masini, int nrMasini) {
+	for (int i = 0; i < nrMasini; i++) {
+		afisareMasina(masini[i]);
+	}
+}
+
 
 int main() {
 
@@ -79,9 +85,7 @@ int main() {
 		}
 	}
 
-	for (int i = 0; i < 6; i++) {
-		afisareMasina(masini[i]);
-	}
+	afisareVectorMasini(masini, nrMasini);
 
 	printf("\nNr masini: %d", nrMasini);
 	return 0;
