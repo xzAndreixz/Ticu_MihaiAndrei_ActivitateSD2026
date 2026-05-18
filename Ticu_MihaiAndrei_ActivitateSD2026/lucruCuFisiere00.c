@@ -67,17 +67,22 @@ void adaugaMasiniInVector(Masina** masini, int* nrMasini, Masina m) {
 int main() {
 
 	Masina m;
-
+	Masina* masini = NULL;
+	int nrMasini = 0;
 	FILE* f = fopen("masini.txt", "r");
 	if (f != NULL) {
 		while (!feof(f)) {
 			m = citireMasinaFisier(f);
-			afisareMasina(m);
-			free(m.model);
-			free(m.numeSofer);
+			adaugaMasiniInVector(&masini, &nrMasini, m);
+			//afisareMasina(m);
+			
 		}
 	}
 
+	for (int i = 0; i < 6; i++) {
+		afisareMasina(masini[i]);
+	}
 
+	printf("\nNr masini: %d", nrMasini);
 	return 0;
 }
