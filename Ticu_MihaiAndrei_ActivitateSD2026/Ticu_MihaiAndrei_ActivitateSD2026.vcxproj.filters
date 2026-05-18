@@ -54,6 +54,12 @@
     <ClCompile Include="heapPb02.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="HashTableExc00.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="lucruCuFisiere00.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="masiniHeap.txt" />

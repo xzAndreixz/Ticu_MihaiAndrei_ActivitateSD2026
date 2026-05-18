@@ -20,11 +20,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="andreiPb01.c" />
+    <ClCompile Include="HashTableExc00.c" />
     <ClCompile Include="heapPb02.c" />
     <ClCompile Include="Lfisier02.c" />
     <ClCompile Include="listeLucru01.c" />
     <ClCompile Include="LSD.c" />
     <ClCompile Include="LSI00.c" />
+    <ClCompile Include="lucruCuFisiere00.c" />
     <ClCompile Include="LucruFisiere01.c" />
     <ClCompile Include="Problema02malloc.c" />
     <ClCompile Include="ProblemeA01.c" />

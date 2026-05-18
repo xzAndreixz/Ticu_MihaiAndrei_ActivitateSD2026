@@ -1,4 +1,4 @@
-
+/*
 #include <stdio.h>
 #include<stdlib.h>
 
@@ -143,7 +143,7 @@ int main() {
 		filtarereHeapMax(h, i);
 	}
 
-
+	
 	
 	
 	sortareCrescator(h);
@@ -155,3 +155,5 @@ int main() {
 	return 0;
 
 }
+
+*/
