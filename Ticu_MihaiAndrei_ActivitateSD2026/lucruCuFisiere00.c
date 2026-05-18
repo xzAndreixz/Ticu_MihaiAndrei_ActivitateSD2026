@@ -51,6 +51,18 @@ void afisareMasina(Masina m) {
 	printf("\nNume sofer: %s", m.numeSofer);
 	printf("Serie: %c", m.serie);
 }
+void adaugaMasiniInVector(Masina** masini, int* nrMasini, Masina m) {
+	Masina* aux = (Masina*)malloc(sizeof(Masina) * ((*nrMasini) + 1));
+	for (int i = 0; i < (*nrMasini); i++) {
+		aux[i] = (*masini)[i];
+	}
+	aux[(*nrMasini)] = m;
+	free((*masini));
+	(*masini) = aux;
+	(*nrMasini)++;
+
+}
+
 
 int main() {
 
