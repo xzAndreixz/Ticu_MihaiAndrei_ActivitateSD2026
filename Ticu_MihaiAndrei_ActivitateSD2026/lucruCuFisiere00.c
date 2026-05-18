@@ -69,7 +69,14 @@ void afisareVectorMasini(Masina* masini, int nrMasini) {
 	}
 }
 
-
+void dezalocareVectorMasini(Masina** masini, int* nm) {
+	for (int i = 0; i < (*nm); i++) {
+		free((*masini)[i].model);
+		free((*masini)[i].numeSofer);
+	}
+	free((*masini)); masini = NULL;
+	(*nm) = 0;
+}
 int main() {
 
 	Masina m;
@@ -88,5 +95,9 @@ int main() {
 	afisareVectorMasini(masini, nrMasini);
 
 	printf("\nNr masini: %d", nrMasini);
+	dezalocareVectorMasini(&masini,&nrMasini);
+	printf("\nNr masini: %d", nrMasini);
+
+
 	return 0;
 }
