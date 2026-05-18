@@ -20,8 +20,8 @@ Masina citireMasinaFisier(FILE* file) {
 
 	fgets(buffer, 100, file);
 	token = strtok(buffer, delimitatori);
-	
 	m.id = atoi(token);
+	
 	token = strtok(NULL, delimitatori);
 	m.nrUsi = atoi(token);
 
@@ -42,9 +42,18 @@ Masina citireMasinaFisier(FILE* file) {
 	return m;
 }
 
+void afisareMasina(Masina m) {
+	printf("\nId: %d", m.id);
+	printf("\nNr usi: %d", m.nrUsi);
+	printf("\nPret: %.2f", m.pret);
+	printf("\nModel: %s", m.model);
+	printf("\nNume sofer: %s", m.numeSofer);
+	printf("Serie: %c", m.serie);
+}
+
 int main() {
 
-	
+		
 
 
 	return 0;
