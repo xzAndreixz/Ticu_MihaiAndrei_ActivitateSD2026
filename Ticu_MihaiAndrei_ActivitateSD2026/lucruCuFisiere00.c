@@ -77,26 +77,30 @@ void dezalocareVectorMasini(Masina** masini, int* nm) {
 	free((*masini)); masini = NULL;
 	(*nm) = 0;
 }
-int main() {
 
-	Masina m;
+Masina* citireVectorMasiniFisier(const char* numeFisier, int* nrm) {
 	Masina* masini = NULL;
-	int nrMasini = 0;
-	FILE* f = fopen("masini.txt", "r");
+	FILE* f = fopen(numeFisier, "r");
 	if (f != NULL) {
 		while (!feof(f)) {
-			m = citireMasinaFisier(f);
-			adaugaMasiniInVector(&masini, &nrMasini, m);
-			//afisareMasina(m);
-			
+			Masina m = citireMasinaFisier(f);
+			adaugaMasiniInVector(&masini, nrm, m);
 		}
+		fclose(f);
 	}
+	return masini;
+}
+
+int main() {
+
+	Masina* masini = NULL;
+	int nrMasini = 0;
+	masini = citireVectorMasiniFisier("masini.txt", &nrMasini);
 
 	afisareVectorMasini(masini, nrMasini);
+	dezalocareVectorMasini(&masini, &nrMasini);
 
-	printf("\nNr masini: %d", nrMasini);
-	dezalocareVectorMasini(&masini,&nrMasini);
-	printf("\nNr masini: %d", nrMasini);
+	printf("Numar masini dupa dezalocare: %d", nrMasini);
 
 
 	return 0;
