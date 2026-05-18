@@ -1,3 +1,4 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include<stdlib.h>
 #include<string.h>
@@ -53,7 +54,17 @@ void afisareMasina(Masina m) {
 
 int main() {
 
-		
+	Masina m;
+
+	FILE* f = fopen("masini.txt", "r");
+	if (f != NULL) {
+		while (!feof(f)) {
+			m = citireMasinaFisier(f);
+			afisareMasina(m);
+			free(m.model);
+			free(m.numeSofer);
+		}
+	}
 
 
 	return 0;
