@@ -95,6 +95,15 @@ typedef struct Nod {
 	struct Nod* next;  //aici retin adresa urmatorului nod. Daca nu ai pune pointer ai construi un nod intr-un nod si asa se duce la infit :)
 }Nod;
 
+void insereazaNodInceput(Nod** cap, Masina m) {
+	Nod* nou = (Nod*)malloc(sizeof(Nod));
+	nou->m = m;
+	nou->next = (*cap);
+	(*cap) = nou;
+
+}
+
+
 int main() {
 
 	Nod* cap = NULL;
@@ -104,6 +113,22 @@ int main() {
 	masini = citireVectorMasiniFisier("masini.txt", &nrMasini);
 
 	afisareVectorMasini(masini, nrMasini);
+
+
+	printf("\nLucru cu lista!\n");
+
+		for (int i = 0; i < nrMasini; i++) {
+			insereazaNodInceput(&cap, masini[i]);
+
+		}
+
+
+		Nod* pas = cap;
+
+		while (pas != NULL) {
+			afisareMasina(pas->m);
+			pas = pas->next;
+		}
 
 	dezalocareVectorMasini(&masini, &nrMasini);
 
