@@ -138,6 +138,66 @@ void scadePretPesteTarget(Nod** cap, float target) {
 	}
 }
 
+void stergereListaPrimaAparitie(Nod** cap, float pret) {
+	if ((*cap) == NULL) { printf("Lista goala!"); return; }
+
+	Nod* curent = (*cap);
+	Nod* anterior = NULL;
+	while (curent != NULL) {
+		if (curent->m.pret < pret) {
+			if (anterior == NULL) {
+				(*cap) = curent->next;  //aici am facut legatura pentru caz primul nod
+			}
+			else {
+				anterior->next = curent->next;  //aici am facut legatura pentru caz mijloc sau final
+			}
+			free(curent->m.model);
+			free(curent->m.numeSofer);
+			free(curent);
+			return;
+		}
+		else {
+			anterior = curent;
+			curent = curent->next;
+		}
+	}
+
+	printf("Nu s-a gasit valoarea!");
+
+}
+
+void stergereListaToateAparitiile(Nod** cap, float pret) {
+	if ((*cap) == NULL) { prinf("Lista goala!"); return; }
+	Nod* curent = (*cap);
+	Nod* anterior = NULL;
+	int gasit = 0;
+	while (curent != NULL) {
+		if (curent->m.pret < pret) {
+			gasit = 1;
+			if (anterior == NULL) {
+				(*cap) = curent->next;
+			}
+			else {
+				anterior->next = curent->next;
+			}
+
+			Nod* deSters = curent;
+			curent = curent->next;
+			free(deSters->m.model);
+			free(deSters->m.numeSofer);
+			free(deSters);
+		}
+		else {
+			anterior = curent;
+			curent = curent->next;
+		}
+	}
+	if (!gasit) {
+		printf("Nu exista in lista!");
+	}
+}
+
+
 int main() {
 
 	Nod* cap = NULL;
