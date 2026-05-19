@@ -121,6 +121,23 @@ void insereazaNodSfarsit(Nod** cap, Masina m) {
 
 }
 
+void scadePretPesteTarget(Nod** cap, float target) {
+	Nod* pas = (Nod*)malloc(sizeof(Nod));
+	pas = (*cap);
+	while (pas != NULL) {
+		if (pas->m.pret > target && pas->m.pret>1000) {
+			pas->m.pret = pas->m.pret - 1000;
+
+			printf("\nS-a gasit un auto cu pret peste targetul %.2f. Noul pret este: %.2f", target, pas->m.pret);
+		}
+		if (pas->m.pret > target && pas->m.pret <= 1000) { pas->m.pret = 0; printf("\nS-a gasit un auto cu pret peste targetul %.2f. Masina este gratis", target);
+		}
+			pas = pas->next;
+			
+		
+	}
+}
+
 int main() {
 
 	Nod* cap = NULL;
@@ -138,6 +155,8 @@ int main() {
 			insereazaNodSfarsit(&cap, masini[i]);
 
 		}
+
+		scadePretPesteTarget(&cap, 5000);
 
 
 		Nod* pas = cap;
