@@ -167,7 +167,7 @@ void stergereListaPrimaAparitie(Nod** cap, float pret) {
 }
 
 void stergereListaToateAparitiile(Nod** cap, float pret) {
-	if ((*cap) == NULL) { prinf("Lista goala!"); return; }
+	if ((*cap) == NULL) { printf("Lista goala!"); return; }
 	Nod* curent = (*cap);
 	Nod* anterior = NULL;
 	int gasit = 0;
@@ -206,7 +206,7 @@ int main() {
 	int nrMasini = 0;
 	masini = citireVectorMasiniFisier("masini.txt", &nrMasini);
 
-	afisareVectorMasini(masini, nrMasini);
+	//afisareVectorMasini(masini, nrMasini);
 
 
 	printf("\nLucru cu lista!\n");
@@ -216,7 +216,7 @@ int main() {
 
 		}
 
-		scadePretPesteTarget(&cap, 5000);
+		stergereListaPrimaAparitie(&cap, 6000);
 
 
 		Nod* pas = cap;
@@ -226,7 +226,7 @@ int main() {
 			pas = pas->next;
 		}
 
-	dezalocareVectorMasini(&masini, &nrMasini);
+	//dezalocareVectorMasini(&masini, &nrMasini);
 
 	
 
