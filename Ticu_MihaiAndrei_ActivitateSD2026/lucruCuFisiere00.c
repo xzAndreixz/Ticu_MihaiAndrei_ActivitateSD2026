@@ -103,6 +103,23 @@ void insereazaNodInceput(Nod** cap, Masina m) {
 
 }
 
+void insereazaNodSfarsit(Nod** cap, Masina m) {
+	Nod* nou = (Nod*)malloc(sizeof(Nod));
+	nou->m = m;
+	nou->next = NULL;
+
+	if ((*cap) == NULL) {
+		(*cap) = nou;
+	}
+	else {
+		Nod* pas = (*cap);
+		while (pas->next != NULL)
+			pas = pas->next;
+		pas->next = nou;
+	}
+
+
+}
 
 int main() {
 
@@ -118,7 +135,7 @@ int main() {
 	printf("\nLucru cu lista!\n");
 
 		for (int i = 0; i < nrMasini; i++) {
-			insereazaNodInceput(&cap, masini[i]);
+			insereazaNodSfarsit(&cap, masini[i]);
 
 		}
 
