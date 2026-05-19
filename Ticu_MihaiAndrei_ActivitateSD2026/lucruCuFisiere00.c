@@ -12,7 +12,6 @@ typedef struct Masina {
 	unsigned char serie;
 }Masina;
 
-
 Masina citireMasinaFisier(FILE* file) {
 	Masina m;
 	char buffer[100];
@@ -91,16 +90,24 @@ Masina* citireVectorMasiniFisier(const char* numeFisier, int* nrm) {
 	return masini;
 }
 
+typedef struct Nod {
+	Masina m; //aici retin informatia
+	struct Nod* next;  //aici retin adresa urmatorului nod. Daca nu ai pune pointer ai construi un nod intr-un nod si asa se duce la infit :)
+}Nod;
+
 int main() {
+
+	Nod* cap = NULL;
 
 	Masina* masini = NULL;
 	int nrMasini = 0;
 	masini = citireVectorMasiniFisier("masini.txt", &nrMasini);
 
 	afisareVectorMasini(masini, nrMasini);
+
 	dezalocareVectorMasini(&masini, &nrMasini);
 
-	printf("Numar masini dupa dezalocare: %d", nrMasini);
+	
 
 
 	return 0;
