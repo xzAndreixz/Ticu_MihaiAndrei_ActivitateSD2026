@@ -69,6 +69,8 @@ void afisareHash(HashTable h) {
 }
 
 
+
+
 int main() {
 
 	HashTable h1;
