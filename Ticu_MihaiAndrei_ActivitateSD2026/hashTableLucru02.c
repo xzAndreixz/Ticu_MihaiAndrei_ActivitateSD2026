@@ -68,7 +68,23 @@ void afisareHash(HashTable h) {
 	}
 }
 
+void dezalocareNod(Nod** cap) {
+	Nod* curent = *cap;
+	while (curent != NULL) {
+		Nod* temp = curent;
+		curent = curent->next;
+		free(temp);
+	}
+	*cap = NULL;
+}
 
+void dezalocareHashTable(HashTable* h) {
+	for (int i = 0; i < h->dim; i++) {
+		dezalocareNod(&h->liste[i]);
+	}
+	free(h->liste);
+	h->liste = NULL;
+}
 
 
 int main() {
