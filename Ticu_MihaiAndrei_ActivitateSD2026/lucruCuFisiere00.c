@@ -216,7 +216,7 @@ int main() {
 
 		}
 
-		stergereListaPrimaAparitie(&cap, 6000);
+		stergereListaToateAparitiile(&cap, 6000);
 
 
 		Nod* pas = cap;
