@@ -87,8 +87,65 @@ void dezalocareHashTable(HashTable* h) {
 }
 
 
+int cautare(HashTable h, int val) {
+	int index = calculeazaHash(val, h.dim);
+	Nod* curent = h.liste[index];
+	while (curent != NULL) {
+		if (curent->valoare == val)
+			return 1;
+		curent = curent->next;
+
+	}
+	return 0;
+}
+
+float* calculValMediePerCluster(HashTable h) {
+	int lungimeV = 0;
+	float* v;
+	for (int i = 0; i < h.dim; i++) {
+		if (h.liste[i] != NULL)
+			lungimeV++;
+	}
+
+	if (lungimeV)
+	{
+		v = (int*)malloc(sizeof(int) * lungimeV);
+		int j = 0;
+		for (int i = 0; i < h.dim; i++) {
+			Nod* curent = h.liste[i];
+			if (curent != NULL) {
+				float s = 0; int k = 0;
+				while (curent != NULL) {
+					s = s + (float)curent->valoare;
+					k++;
+					curent = curent->next;
+				}
+				s = s / (float)k;
+				v[j++] = s;
+			}
+
+		}
+		return v;
+	}
+	else {
+		return NULL;
+	}
+
+
+}
+int calucleazaLungime(HashTable h) {
+	int lungimeV = 0;
+	int* v;
+	for (int i = 0; i < h.dim; i++) {
+		if (h.liste[i] != NULL)
+			lungimeV++;
+	}
+	return lungimeV;
+}
+
 int main() {
 
+	float* v = NULL;
 	HashTable h1;
 	h1 = initializare(10);
 	inserareHash(h1, 25);
@@ -101,5 +158,19 @@ int main() {
 	afisareHash(h1);
 
 
+	if (cautare(h1, 49)) {
+		printf("Este in hash!");
+	}
+	else {
+		printf("Nu este in hash!");
+	}
+
+
+	
+	int n = calucleazaLungime(h1);
+	v = calculValMediePerCluster(h1);
+	for (int i = 0; i < n; i++) {
+		printf("\nVal. med. cluster %d este: %.2f\n", i, v[i]);
+	}
 	return 0;
 }
