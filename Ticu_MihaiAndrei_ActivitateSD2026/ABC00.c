@@ -64,24 +64,42 @@ Nod* cauta(Nod* r, int id) {
 	return cauta(r->dreapta, id);
 }
 
+void parcurgereInOrdine(Nod* r) {
+	if (r == NULL) return;
+	parcurgereInOrdine(r->stanga);
+	printf("  ");
+	parcurgereInOrdine(r->dreapta);
+}
+
+void adaugaMasiniaV(Masina** masini, Masina m, int* dim) {
+		Masina* aux = (Masina*)malloc(sizeof(Masina) * ((*dim) + 1));
+	for (int i = 0; i < (*dim); i++) {
+		aux[i] = (*masini)[i];
+	}
+
+	aux[*dim].id = m.id;
+	aux[*dim].pret = m.pret;
+	aux[*dim].model = (char*)malloc(strlen(m.model) + 1);
+	strcpy(aux[*dim].model, m.model);
+
+	free((*masini));
+	(*masini) = aux;
+	(*dim)++;
+}
+
 int main() {
 	Masina m = initializare(1, 1000.5, "Astra");
 	Masina m2 = initializare(5, 2000, "Audi");
 	Masina m3 = initializare(15, 3000, "Opel");
+	
+	Masina* masini;
 
 	Nod* radacina = NULL;
 	radacina = insereaza(radacina, m);
 	radacina = insereaza(radacina, m2);
 	radacina = insereaza(radacina, m3);
 
-	Nod* rezultat = cauta(radacina, 5);
 
-	if (rezultat != NULL) {
-		printf("Gasit: %s\n", rezultat->info.model);
-	}
-	else {
-		printf("Nu exista!\n");
-	}
 
 
 	return 0;
