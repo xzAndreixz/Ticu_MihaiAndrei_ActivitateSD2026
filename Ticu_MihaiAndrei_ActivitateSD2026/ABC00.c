@@ -87,20 +87,39 @@ void adaugaMasiniaV(Masina** masini, Masina m, int* dim) {
 	(*dim)++;
 }
 
+void afisareInOrdine(Nod* r) {
+	if (r == NULL) return;
+	afisareInOrdine(r->stanga);
+	printf("Id: %d ", r->info.id);
+	afisareInOrdine(r->dreapta);
+}
+
+void VectorInOrdine(Nod* r, Masina** m, int* dim) {
+	if (r == NULL) return;
+	VectorInOrdine(r->stanga,m,dim);
+	adaugaMasiniaV(m,r->info,dim);
+	VectorInOrdine(r->dreapta, m, dim);
+}
+
 int main() {
 	Masina m = initializare(1, 1000.5, "Astra");
 	Masina m2 = initializare(5, 2000, "Audi");
 	Masina m3 = initializare(15, 3000, "Opel");
 	
-	Masina* masini;
+	Masina* masini = NULL;
 
 	Nod* radacina = NULL;
 	radacina = insereaza(radacina, m);
 	radacina = insereaza(radacina, m2);
 	radacina = insereaza(radacina, m3);
 
+	int dim = 0;
+	//afisareInOrdine(radacina);
+	VectorInOrdine(radacina, &masini, &dim);
 
-
+	for (int i = 0; i < dim; i++) {
+		printf("Id: %d   ", masini[i].id);
+	}
 
 	return 0;
 }
