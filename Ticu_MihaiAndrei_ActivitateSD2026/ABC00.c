@@ -19,6 +19,16 @@ typedef struct Nod {
 
 }Nod;
 
+Masina initializare(int id, float pret, const char* model) {
+	Masina m;
+	m.id = id;
+	m.pret = pret;
+	m.model = (char*)malloc(strlen(model) + 1);
+	strcpy(m.model, model);
+
+	return m;
+}
+
 
 Nod* creeazaNod(Masina m) {
 	Nod* nou = (Nod*)malloc(sizeof(Nod));
@@ -31,13 +41,13 @@ Nod* creeazaNod(Masina m) {
 
 Nod* insereaza(Nod* radacina, Masina m) {
 	if (radacina == NULL)
-		creeazaNod(m);
+		return creeazaNod(m);
 
 	if (m.id < radacina->info.id) {
-		insereaza(radacina->stanga, m);
+		radacina->stanga = insereaza(radacina->stanga, m);
 	}
 	else if (m.id > radacina->info.id) {
-		insereaza(radacina->stanga, m);
+		radacina->stanga = insereaza(radacina->stanga, m);
 	}
 
 	return radacina;
@@ -45,8 +55,9 @@ Nod* insereaza(Nod* radacina, Masina m) {
 }
 
 int main() {
-
-	
+	Masina m = initializare(1, 1000.5, "Astra");
+	Nod* radacina = NULL;
+	insereaza(radacina, m);
 
 
 
