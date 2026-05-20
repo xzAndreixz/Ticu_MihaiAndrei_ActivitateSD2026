@@ -20,7 +20,7 @@ typedef struct Nod {
 }Nod;
 
 
-Nod* insereaza(Masina m) {
+Nod* creeazaNod(Masina m) {
 	Nod* nou = (Nod*)malloc(sizeof(Nod));
 	nou->info = m;
 	nou->info.model = (char*)malloc(strlen(m.model) + 1);
