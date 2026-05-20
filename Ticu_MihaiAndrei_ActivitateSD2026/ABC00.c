@@ -29,6 +29,20 @@ Nod* creeazaNod(Masina m) {
 	return nou;
 }
 
+Nod* insereaza(Nod* radacina, Masina m) {
+	if (radacina == NULL)
+		creeazaNod(m);
+
+	if (m.id < radacina->info.id) {
+		insereaza(radacina->stanga, m);
+	}
+	else if (m.id > radacina->info.id) {
+		insereaza(radacina->stanga, m);
+	}
+
+	return radacina;
+
+}
 
 int main() {
 
